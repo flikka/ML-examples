@@ -4,7 +4,7 @@ from sklearn.cross_validation import train_test_split
 from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
 
 
-def random_forest(classifier):
+def train_test(classifier):
     # create the training & test sets, skipping the header row with [1:]
     dataset = genfromtxt('Data/train.csv', delimiter=',')[1:]
     train, test = train_test_split(dataset, train_size = 0.8)
@@ -17,10 +17,10 @@ def random_forest(classifier):
     
     rf = classifier
 
-    #Fit using training data
+    # Fit using training data
     rf.fit(train_data, train_target)
 
-    #Predict using the hold back set
+    # Predict using the hold back set
     prediction = rf.predict_proba(test_data)
     index = 0;
     true_positive=0
@@ -58,11 +58,11 @@ def random_forest(classifier):
     #             header='MoleculeId,PredictedProbability', comments = '')
 
 if __name__=="__main__":
-    print ("Random forest")
-    random_forest(RandomForestClassifier(n_estimators=100))
+    # print ("Random forest")
+    # train_test(RandomForestClassifier(n_estimators=100))
     print("Naive Bayes - Gaussian")
-    random_forest(GaussianNB())
+    train_test(GaussianNB())
     print("Naive Bayes - Bernoullian")
-    random_forest(BernoulliNB())
+    train_test(BernoulliNB())
     print("Naive Bayes - Multinomial")
-    random_forest(MultinomialNB())
+    train_test(MultinomialNB())
