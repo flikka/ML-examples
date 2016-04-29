@@ -57,12 +57,13 @@ def train_test(classifier):
     #savetxt('Data/submission_500.csv', predicted_probs, delimiter=',', fmt='%d,%f',
     #             header='MoleculeId,PredictedProbability', comments = '')
 
+
 if __name__=="__main__":
-    # print ("Random forest")
-    # train_test(RandomForestClassifier(n_estimators=100))
-    print("Naive Bayes - Gaussian")
-    train_test(GaussianNB())
-    print("Naive Bayes - Bernoullian")
-    train_test(BernoulliNB())
-    print("Naive Bayes - Multinomial")
-    train_test(MultinomialNB())
+    print ("Random forest")
+    train_test(RandomForestClassifier(n_estimators=100))
+    #print("Naive Bayes - Gaussian")
+    #train_test(GaussianNB())
+    #print("Naive Bayes - Bernoullian")
+    #train_test(BernoulliNB())
+    #print("Naive Bayes - Multinomial")
+    #train_test(MultinomialNB())
