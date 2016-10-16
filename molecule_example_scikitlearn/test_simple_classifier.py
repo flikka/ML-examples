@@ -1,13 +1,22 @@
 from numpy import genfromtxt
 from sklearn.ensemble import RandomForestClassifier
+import time
 from sklearn.cross_validation import train_test_split
 from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
 
 
 def train_test(classifier):
     # create the training & test sets, skipping the header row with [1:]
-    dataset = genfromtxt('Data/train.csv', delimiter=',')[1:]
-    train, test = train_test_split(dataset, train_size = 0.8)
+    start_time = time.time()
+    train = genfromtxt('Data/train.csv', delimiter=',', skip_header=1)
+    elapsed = time.time() - start_time
+    print("Størrelsen på trening er ", train.shape)
+    print("Lesing av input tok: ", elapsed)
+    
+    test = genfromtxt('Data/test.csv', delimiter=',', skip_header=1)
+    print("Størrelsen på testing er ", test.shape)
+
+    #train, test = train_test_split(dataset, train_size = 0.8)
 
     train_target = [x[0] for x in train]
     train_data = [x[1:] for x in train]
