@@ -19,14 +19,37 @@ def do_pca(X, y):
     comps = pca.fit(X).transform(X)
     print(comps.shape)
 
-    plt.scatter(comps.T[0,:], comps.T[1,:], c=y, cmap='viridis')
+    #plt.scatter(X[:, 0], X[:, 1], cmap='viridis')
+    plt.scatter(comps[:,0], comps[:,1], c=y, cmap='viridis', s=70)
 
-    plt.title("PCA")
-    plt.xlabel("PC1")
-    plt.ylabel("PC2")
-    plt.grid();
     plt.savefig('pca.png', dpi=125)
-    #plt.show()
+    plt.show()
+
+
+if __name__ == '__main__':
+    X, y = read_X_Y('Data/train_500.csv')
+
+    do_pca(X, y)
+    #do_pls(X, y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def do_pls(X, Y):
     pls2 = PLSRegression(n_components=2)
@@ -42,9 +65,3 @@ def do_pls(X, Y):
     plt.scatter(out[:, 0], out[:, 1], c=Y, cmap='viridis')
     plt.savefig('pls.png', dpi=125)
     #plt.show()
-
-if __name__ == '__main__':
-    X, y = read_X_Y('Data/train.csv')
-
-    do_pca(X, y)
-    do_pls(X, y)
